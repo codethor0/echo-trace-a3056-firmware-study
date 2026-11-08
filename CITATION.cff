@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Please cite the published Zenodo research preprint."
+authors:
+  - family-names: "Thor"
+    given-names: "Thor"
+    orcid: "https://orcid.org/0009-0001-6573-385X"
+title: "Firmware-Update Observability in a Single-Earbud AirPods 4 ANC Configuration: A macOS UARP Case Study of Asset Discovery, Update Initiation, Device-State Verification, and Bounded Direct-Transport Diagnostics"
+version: "1.0"
+date-released: "2026-11-08"
+doi: "10.5281/zenodo.24056722"
+url: "https://doi.org/10.5281/zenodo.24056722"
+license: "CC-BY-4.0"
+repository-code: "https://github.com/codethor0/echo-trace-a3056-firmware-study"
+keywords:
+  - AirPods 4 ANC
+  - A3056
+  - firmware update
+  - UARP
+  - macOS
+  - Bluetooth
+  - repairability
+abstract: "An observational single-device study of the firmware-update path for a surviving AirPods 4 ANC A3056 earbud. Three authorized firmware offers were acknowledged, no firmware-image bytes were served, and the cause of the terminal processing outcomes remains unresolved."

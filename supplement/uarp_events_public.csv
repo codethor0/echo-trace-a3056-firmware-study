@@ -1,0 +1,10 @@
+timestamp_cst,source,model_or_pid,version,event,evidence_status
+2026-11-07T13:37:45-0600,system_profiler,0x201B / A3056,8B21,connected_device_version,verified_host_report
+2026-11-07T15:09:51-0600,audio_guard,0x201B / A3056,,anc_off_cli_readback,verified_host_report
+2026-11-07T15:10:06-0600,audio_guard,0x201B / A3056,,anc_noise_cancellation_24_samples_begin,verified_host_report
+2026-11-07T15:34:28-0600,audio_guard,0x201B / A3056,,anc_off_24_native_ui_samples_begin,verified_host_report
+2026-11-07T15:41:22-0600,audio_guard,0x201B / A3056,,anc_off_12_reconnect_samples_begin,verified_host_report
+2026-11-07T15:49:59-0600,uarpassetmanagerd,A3056,9.0.348.0,firmware_asset_cache_found,verified_host_report
+2026-11-07T15:50:51-0600,uarpassetmanagerd,A3056,8.1.21.0,earbud_and_case_device_settings_registered,verified_host_report
+2026-11-07T15:50:51-0600,uarpassetmanagerd,A3056,9.0.348.0,firmware_cache_available,verified_host_report
+2026-11-07T15:53:14-0600,uarpd,not_correlated,,expired_file_pruner_error_burst,not_proven_device_causal

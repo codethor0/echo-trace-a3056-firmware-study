@@ -1,0 +1,17 @@
+# Local and private research artifacts (never commit)
+.DS_Store
+*.log
+*.pcap
+*.pcapng
+*.har
+*.key
+*.pem
+*.token
+.env*
+__pycache__/
+.pytest_cache/
+*_raw_*
+*private*
+*Private*
+*.zip
+*.sh

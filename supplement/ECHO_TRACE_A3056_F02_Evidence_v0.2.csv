@@ -1,0 +1,7 @@
+time_local,time_precision,source,connection,product_id,earbud_firmware,case_firmware,left_battery_pct,case_battery_pct,action,classification,notes
+2026-11-07 16:17:47 -0600,exact,initial_script_preflight,disconnected_cached,0x201B,8B21,8B21,,,no_scan,local_preflight_failed,Initial experiment stopped before scan
+2026-11-07 (exact time not captured),unspecified,airpods-fw_update,disconnected_cached,0x201B,8B21,8B21,97,100,scan_requested,notification_posted,"Manual update command; host-wide notification, not a direct flash"
+2026-11-07 16:47:33 -0600,exact,airpods-fw_status_check,disconnected_cached,0x201B,8B21,8B21,100,100,post_scan_check,cached,Version not live verified
+2026-11-07 16:48:27 -0600,exact,airpods-fw_status,disconnected_cached,0x201B,8B21,8B21,100,100,post_scan_check,cached,Version not live verified
+2026-11-07 16:49:43 -0600,exact,airpods-fw_status,connected,0x201B,8B21,8B21,100,100,post_scan_check,no_version_progress,Fresh host-connected reading
+2026-11-07 (after 16:49:43),relative,system_profiler_SPBluetoothDataType,connected,0x201B,8B21,8B21,100,100,cross_interface_check,no_version_progress,Exact second-interface timestamp not printed
