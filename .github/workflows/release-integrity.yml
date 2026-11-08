@@ -1,0 +1,79 @@
+name: Release Integrity
+
+# Deterministic checks for the published research record.
+# No network access after checkout, no secrets, no schedule, no deployment.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Verify SHA-256 manifest
+        run: |
+          set -euo pipefail
+          sha256sum --check --strict --quiet SHA256SUMS.txt
+
+      - name: Require manifest to match the tracked file set
+        run: |
+          set -euo pipefail
+          git ls-files | grep -vxE 'SHA256SUMS\.txt|\.github/.*' | sort > "$RUNNER_TEMP/tracked.txt"
+          awk '{print $2}' SHA256SUMS.txt | sort > "$RUNNER_TEMP/listed.txt"
+          if ! diff -u "$RUNNER_TEMP/listed.txt" "$RUNNER_TEMP/tracked.txt"; then
+            echo "SHA256SUMS.txt does not match the tracked files. Regenerate it in the same commit." >&2
+            exit 1
+          fi
+
+      - name: Pin the published paper
+        run: |
+          set -euo pipefail
+          echo "db9089fd829f3dd6266d14f012225f064929c971ac3948c119248b5c7a534f3e  paper/ECHO_TRACE_A3056_Research_Paper.pdf" | sha256sum --check --strict
+
+      - name: Block private artifacts and hardware identifiers
+        run: |
+          set -euo pipefail
+          if git ls-files | grep -iE '\.(log|pcap|pcapng|har|key|pem|p12|token|zip|sh|bin|ipsw|uarp)$|(^|/)\.env|(^|/)\.ds_store$|(^|/)\.(codex|claude|cursor|wrangler)/|_raw_|private'; then
+            echo "A tracked file type or path is not allowed in the public release." >&2
+            exit 1
+          fi
+          if git grep -nIE '\b([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}\b' -- . ':!.github'; then
+            echo "Possible Bluetooth or hardware address found." >&2
+            exit 1
+          fi
+          if git grep -nIE 'ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|xox[abprs]-[A-Za-z0-9-]{10,}' -- . ':!.github'; then
+            echo "Credential-like string found." >&2
+            exit 1
+          fi
+
+      - name: Check citation metadata and README links
+        run: |
+          set -euo pipefail
+          grep -qx 'cff-version: 1.2.0' CITATION.cff
+          grep -qx 'doi: "10.5281/zenodo.24056722"' CITATION.cff
+          grep -q 'https://doi.org/10.5281/zenodo.24056722' README.md
+          python3 - <<'PY'
+          import os, re, sys
+          text = open("README.md", encoding="utf-8").read()
+          refs = re.findall(r'\]\(([^)\s]+)\)', text) + re.findall(r'(?:src|href)="([^"]+)"', text)
+          missing = [r for r in refs
+                     if not re.match(r'^(https?:|mailto:|#)', r)
+                     and not os.path.exists(r.split("#")[0].rstrip("/"))]
+          if missing:
+              sys.exit("README links to missing local paths: " + ", ".join(sorted(set(missing))))
+          print(f"README local links OK ({len(refs)} references checked)")
+          PY
