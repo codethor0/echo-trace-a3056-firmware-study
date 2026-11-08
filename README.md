@@ -1,6 +1,6 @@
-<p align="center"><img src="assets/research-cover.jpg" width="1000" alt="THOR-SEC cover artwork showing silhouetted practitioners wearing protective helmets"></p>
+<p align="center"><a href="paper/ECHO_TRACE_A3056_Research_Paper.pdf"><img src="assets/paper_first_page.png" width="640" alt="Complete first page of the ECHO TRACE preprint, including title, author, research dates, conceptual illustration and disclaimer, visible abstract text, and page number"></a></p>
 
-<p align="center"><sub>Repository cover artwork</sub></p>
+[Published paper (DOI)](https://doi.org/10.5281/zenodo.24056722) | [Read the PDF](paper/ECHO_TRACE_A3056_Research_Paper.pdf)
 
 # Project THOR | ECHO TRACE
 
@@ -9,12 +9,6 @@
 **AirPods 4 ANC (A3056) single-earbud firmware-update observability study.** Independent research preprint, published November 8, 2026. Version 1.0.
 
 [Read and cite the published paper](https://doi.org/10.5281/zenodo.24056722) | [Zenodo research record](https://zenodo.org/records/24056722)
-
-## Published paper
-
-<p align="center"><a href="paper/ECHO_TRACE_A3056_Research_Paper.pdf"><img src="assets/paper_first_page.png" width="640" alt="Complete first page of the ECHO TRACE preprint, including title, author, research dates, conceptual illustration and disclaimer, visible abstract text, and page number"></a></p>
-
-[Published paper (DOI)](https://doi.org/10.5281/zenodo.24056722) | [Read the PDF](paper/ECHO_TRACE_A3056_Research_Paper.pdf)
 
 ## Question
 
