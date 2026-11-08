@@ -1,4 +1,6 @@
-<p align="center"><img src="assets/paper_first_page.png" width="640" alt="First page of the published ECHO TRACE research preprint"></p>
+<p align="center"><a href="paper/ECHO_TRACE_A3056_Research_Paper.pdf"><img src="assets/paper_first_page.png" width="640" alt="Complete first page of the ECHO TRACE preprint, including title, author, research dates, conceptual illustration and disclaimer, visible abstract text, and page number"></a></p>
+
+[Published paper (DOI)](https://doi.org/10.5281/zenodo.24056722) | [Read the PDF](paper/ECHO_TRACE_A3056_Research_Paper.pdf)
 
 # Project THOR | ECHO TRACE
 
